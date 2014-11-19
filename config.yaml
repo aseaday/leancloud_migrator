@@ -1,0 +1,8 @@
+database: qudian
+collections:
+    - name: qpoint
+      fields:
+        - meta: qid
+          type: int
+        - meta: qtext
+          type: string
