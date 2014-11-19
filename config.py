@@ -15,10 +15,9 @@ option = None
 
 class Config(object):
     def __init__(self, *args, **kwargs):
-        global option
-        if not os.path.isfile(option.configure):
+        if not os.path.isfile('config.yaml'):
             raise('Error Configure File')
-        self._config = option.configure
+        self._config = 'config.yaml'
         super(Config, self).__init__(*args, **kwargs)
 
     def load(self):
@@ -33,14 +32,3 @@ class Config(object):
         who can realize a quick code check not a stupid package charset
         '''
         return True
-
-
-if __name__ == '__main__':
-    try:
-        from optparse import OptionParser
-    except ImportError as e:
-        raise e
-    parser = OptionParser()
-    parser.add_option("-c", "--config", action="store", dest="configure", metavar="FILE")
-    (option, arg) = parser.parse_args()
-    Config().load()
